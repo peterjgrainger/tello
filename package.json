@@ -1,0 +1,34 @@
+{
+  "name": "alexa-skill-boilerplate",
+  "version": "1.0.0",
+  "description": "complete skill creation with ASK cli and heroku deploy",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape \"tests/**/*.js\"",
+    "aws:login": "ask init"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheSmokingGnu/alexa-skill-boilerplate.git"
+  },
+  "keywords": [
+    "alexa",
+    "ASK",
+    "node",
+    "lambda",
+    "heroku",
+    "skills"
+  ],
+  "author": "peter@grainger.xyz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TheSmokingGnu/alexa-skill-boilerplate/issues"
+  },
+  "homepage": "https://github.com/TheSmokingGnu/alexa-skill-boilerplate#readme",
+  "devDependencies": {
+    "tape": "^4.8.0"
+  },
+  "dependencies": {
+    "ask-cli": "^1.0.0-beta.8"
+  }
+}
