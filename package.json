@@ -4,8 +4,28 @@
   "description": "complete skill creation with ASK cli and heroku deploy",
   "main": "index.js",
   "scripts": {
-    "test": "tape \"tests/**/*.js\"",
-    "aws:login": "ask init"
+    "build": "tsc",
+    "test": "tsc && nyc ava",
+    "init": "ask init",
+    "new": "ask new",
+    "deploy": "cd test && ask deploy"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "all": true,
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "src/**/!(*.test.*).[t]s?(x)"
+    ],
+    "reporter": [
+      "html",
+      "lcov",
+      "text",
+      "text-summary"
+    ],
+    "report-dir": "docs/reports/coverage"
   },
   "repository": {
     "type": "git",
@@ -26,9 +46,13 @@
   },
   "homepage": "https://github.com/TheSmokingGnu/alexa-skill-boilerplate#readme",
   "devDependencies": {
-    "tape": "^4.8.0"
+    "ava": "^0.24.0",
+    "nyc": "^11.4.1"
   },
   "dependencies": {
-    "ask-cli": "^1.0.0-beta.8"
+    "alexa-app": "^4.2.0",
+    "ask-cli": "^1.0.0-beta.9",
+    "express": "^4.16.2",
+    "typescript": "^2.6.2"
   }
 }
