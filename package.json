@@ -17,7 +17,8 @@
       ".ts"
     ],
     "include": [
-      "src/**/!(*.test.*).[t]s?(x)"
+      "js/**/!(*.test.*).[j]s?(x)",
+      "src/**/!(*.test.*).[j]s?(x)"
     ],
     "reporter": [
       "html",

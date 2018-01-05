@@ -5,5 +5,6 @@ import {alexaApp} from './app';
 test((t) => {
 	t.is(!!alexaApp, true);
 	t.is(alexaApp.name, 'Skill');
+	console.log('alexaapp', alexaApp)
 
 });
