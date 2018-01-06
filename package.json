@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc",
     "test": "tsc && nyc ava",
+    "security": "snyk test",
     "init": "ask init",
     "new": "ask new",
     "deploy": "cd test && ask deploy"
@@ -49,7 +50,8 @@
   "devDependencies": {
     "ava": "^0.24.0",
     "coveralls": "^3.0.0",
-    "nyc": "^11.4.1"
+    "nyc": "^11.4.1",
+    "snyk": "^1.65.1"
   },
   "dependencies": {
     "alexa-app": "^4.2.0",
