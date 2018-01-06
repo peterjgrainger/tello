@@ -1,5 +1,5 @@
 import test from 'ava';
-import {alexaApp} from './app';
+import {alexaApp} from './alexa-app';
 
 
 test((t) => {
