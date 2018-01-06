@@ -4,6 +4,7 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/TheSmokingGnu/alexa-skill-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/TheSmokingGnu/alexa-skill-boilerplate?branch=master)
 
+[![Known Vulnerabilities](https://snyk.io/test/github/theSmokingGnu/alexa-skill-boilerplate/badge.svg)](https://snyk.io/test/github/theSmokingGnu/alexa-skill-boilerplate)
 
 
 ## Prerequisits
