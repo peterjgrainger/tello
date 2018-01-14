@@ -15,7 +15,7 @@ test((t) => {
             return testResponse
         },
         shouldEndSession: (shouldEnd) => {
-            t.true(shouldEnd);
+            t.false(shouldEnd);
             return testResponse;
         }
     } as response;
