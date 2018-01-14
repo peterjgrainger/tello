@@ -1,10 +1,10 @@
 import test from 'ava';
 import {AmazonDefault} from './amazon-default';
-import { action } from '../stop/stop-action';
+import { stopAction } from '../stop/stop-action';
 
 
 test((t) => {
-    const stopIntent = new AmazonDefault('stop');
+    const stopIntent = new AmazonDefault('stop', stopAction);
 
     const response = {};
 
@@ -12,7 +12,7 @@ test((t) => {
 	t.is(stopIntent.name, 'AMAZON.StopIntent');
     t.deepEqual(stopIntent.schema.slots, {});
     t.deepEqual(stopIntent.schema.utterances, [])
-    t.deepEqual(stopIntent.action, action)
+    t.deepEqual(stopIntent.action, stopAction)
 });
 
 // test((t) => {

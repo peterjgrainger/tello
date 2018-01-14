@@ -13,10 +13,10 @@ export class AmazonDefault implements IntentDefinition {
     schema = new Schema();
     action: (request: request, response:response) => response  
     
-    constructor(name: string) {
+    constructor(name: string, action:(request: request, response:response) => response) {
         const titlise = name.charAt(0).toUpperCase() + name.slice(1);
         this.name = 'AMAZON.'+titlise+'Intent';
-        this.action = require(`../${name}/${name}-action`).action;
+        this.action = action;
     }
 }
 
