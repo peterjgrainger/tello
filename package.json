@@ -8,8 +8,9 @@
     "test": "tsc && ava",
     "security": "snyk test",
     "init": "ask init",
-    "new": "ask new",
-    "deploy": "cd test && ask deploy"
+    "new": "tsc && node js/create-skill-json.js",
+    "deploy": "cd test && ask deploy",
+    "start": "node js/express-app.js"
   },
   "nyc": {
     "check-coverage": true,
@@ -55,12 +56,12 @@
     "coveralls": "^3.0.0",
     "nyc": "^11.4.1",
     "snyk": "^1.65.1",
-    "ts-mockito": "^2.2.7"
+    "ts-mockito": "^2.2.7",
+    "typescript": "^2.6.2",
+    "ask-cli": "^1.0.0-beta.9"
   },
   "dependencies": {
     "alexa-app": "^4.2.0",
-    "ask-cli": "^1.0.0-beta.9",
-    "express": "^4.16.2",
-    "typescript": "^2.6.2"
+    "express": "^4.16.2"
   }
 }

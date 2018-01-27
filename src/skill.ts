@@ -4,7 +4,7 @@ export const skill = {
     skillManifest: {
       publishingInformation: {
         locales: {
-          'en-UK': {
+          'en-GB': {
             "summary": PublishingInformation.SUMMARY,
             "examplePhrases": [
               `Alexa open ${PublishingInformation.APP_NAME}`,
@@ -21,7 +21,12 @@ export const skill = {
         distributionCountries: []
       },
       apis: {
-        custom: {}
+        custom: {
+          endpoint: {
+            sslCertificateType: "Wildcard",
+            uri: PublishingInformation.APP_ENDPOINT
+          }
+        }
       },
       manifestVersion: "1.0"
     }

@@ -21,4 +21,3 @@ alexaApp.intent(help.name, help.schema, help.action)
 alexaApp.intent(hello.name, hello.schema, hello.action);
 
 
-alexaApp.express(new SkillExpressOptions())

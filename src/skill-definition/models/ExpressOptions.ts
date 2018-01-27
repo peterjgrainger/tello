@@ -6,7 +6,11 @@ import * as Express from 'express';
  * of request by express.
  */
 export class SkillExpressOptions implements ExpressOptions {
-    expressApp = Express();
+    expressApp;
     // This is required by Amazon
     checkCert = true;
+
+    constructor(app: any) {
+        this.expressApp = app;
+    }
 } 
