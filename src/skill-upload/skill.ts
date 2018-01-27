@@ -1,4 +1,4 @@
-import {PublishingInformation} from './publishing-information';
+import {PublishingInformation} from '../publishing-information';
 
 export const skill = {
     skillManifest: {

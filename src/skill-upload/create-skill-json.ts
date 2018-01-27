@@ -1,9 +1,9 @@
 import { skill } from "./skill";
 import { writeFileSync, mkdirSync, existsSync } from "fs";
 import { interactionModel } from "./interaction-model";
-import { PublishingInformation } from "./publishing-information";
+import { PublishingInformation } from "../publishing-information";
 import { askConfig } from "./ask-config";
-import { alexaApp } from "./skill-definition/alexa-app";
+import { alexaApp } from "../skill-definition/alexa-app";
 
 if(!existsSync(`./${PublishingInformation.NAME}`)) {
     mkdirSync(`./${PublishingInformation.NAME}`)

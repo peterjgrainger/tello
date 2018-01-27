@@ -1,6 +1,6 @@
 import test from 'ava';
 import { interactionModel } from './interaction-model';
-import { PublishingInformation } from './publishing-information';
+import { PublishingInformation } from '../publishing-information';
 
 
 const intents = {

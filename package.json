@@ -10,7 +10,8 @@
     "init": "ask init",
     "new": "tsc && node js/create-skill-json.js",
     "deploy": "cd test && ask deploy",
-    "start": "node js/express-app.js"
+    "start": "node js/server/express-app.js",
+    "postinstall": "npm run build"
   },
   "nyc": {
     "check-coverage": true,

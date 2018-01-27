@@ -1,5 +1,5 @@
-import { alexaApp } from "./skill-definition/alexa-app";
-import { SkillExpressOptions } from "./skill-definition/models/ExpressOptions";
+import { alexaApp } from "../skill-definition/alexa-app";
+import { SkillExpressOptions } from "./ExpressOptions";
 import * as Express from 'express';
 
 const app = Express();
