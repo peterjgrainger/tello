@@ -10,6 +10,8 @@ export class SkillExpressOptions implements ExpressOptions {
     // This is required by Amazon
     checkCert = true;
 
+    debug:true;
+
     constructor(app: any) {
         this.expressApp = app;
     }

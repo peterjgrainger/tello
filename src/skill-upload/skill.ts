@@ -1,17 +1,19 @@
-export function skill(url: string, userSetInfo ) {
+export function skill(url: string, userSetInfo, links: any) {
     return {
       skillManifest: {
       publishingInformation: {
         locales: {
           'en-GB': {
-            "summary": userSetInfo.SUMMARY,
-            "examplePhrases": [
+            summary: userSetInfo.SUMMARY,
+            examplePhrases: [
               `Alexa open ${userSetInfo.APP_NAME}`,
               `Alexa launch ${userSetInfo.APP_NAME}`,
               `Alexa start ${userSetInfo.APP_NAME}`
             ],
             name: userSetInfo.NAME,
-            description: userSetInfo.DESCRIPTION
+            description: userSetInfo.DESCRIPTION,
+            smallIconUri: links.small,
+            largeIconUri: links.big,
           }
         },
         isAvailableWorldwide: true,
@@ -27,7 +29,20 @@ export function skill(url: string, userSetInfo ) {
           }
         }
       },
-      manifestVersion: "1.0"
+      manifestVersion: "1.0",
+      privacyAndCompliance: {
+        allowsPurchases: false,
+        locales: {
+          "en-GB": {
+            termsOfUseUrl: "",
+            privacyPolicyUrl: ""
+          }
+        },
+        isExportCompliant: true,
+        isChildDirected: false,
+        usesPersonalInfo: false,
+        containsAds: false
+      }
     }
   }
 }

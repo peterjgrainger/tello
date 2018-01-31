@@ -1,0 +1,46 @@
+{
+  "skillManifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-GB": {
+          "summary": "An app to rock your world",
+          "examplePhrases": [
+            "Alexa open Hello World",
+            "Alexa launch Hello World",
+            "Alexa start Hello World"
+          ],
+          "name": "helloWorld",
+          "description": "INSERT AWSOME DESCRIPTION - IMPORTANT!",
+          "smallIconUri": "https://i.imgur.com/W0Ug3ix.png",
+          "largeIconUri": "https://i.imgur.com/iGXb8Xq.png"
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "n/a",
+      "category": "EDUCATION_AND_REFERENCE",
+      "distributionCountries": []
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "sslCertificateType": "Wildcard",
+          "uri": "https://alexa-skill-boilerplate-yvzzvgwgff.now.sh"
+        }
+      }
+    },
+    "manifestVersion": "1.0",
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "locales": {
+        "en-GB": {
+          "termsOfUseUrl": "",
+          "privacyPolicyUrl": ""
+        }
+      },
+      "isExportCompliant": true,
+      "isChildDirected": false,
+      "usesPersonalInfo": false,
+      "containsAds": false
+    }
+  }
+}
