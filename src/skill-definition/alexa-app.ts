@@ -7,33 +7,29 @@ import { HelloWorld } from './intents/hello-world/hello-world';
 import { launch } from './launch/launch';
 import { SkillExpressOptions } from '../server/ExpressOptions';
 import { PublishingInformation } from '../publishing-information';
+import { Intent } from './models/intents/intent';
+import { IntentDefinition } from './models/intents/intent-definition';
 
 
 export class AlexaApp extends app {
+
+    slotTypes = [];
 
     constructor() {
         super("");
     }
 
     addIntents() {
-        const stop = new AmazonDefault('stop', stopAction);
-        const end = new AmazonDefault('cancel', endAction);
-        const help = new AmazonDefault('help', helpAction);
-        const hello = new HelloWorld();
-
-        /**
-         * These are required intents.  You can modify
-         * but there are strict rules
-         */
         this.launch(launch);
-        this.intent(stop.name, stop.schema, stop.action)
-        this.intent(end.name, end.schema, end.action)
-        this.intent(help.name, help.schema, help.action)
+        this.addIntent(new AmazonDefault('stop', stopAction));
+        this.addIntent(new AmazonDefault('cancel', endAction))
+        this.addIntent(new AmazonDefault('help', helpAction))
+        this.addIntent(new HelloWorld());
+    }
 
-        /**
-         * Add your own intents here.
-         */
-        this.intent(hello.name, hello.schema, hello.action);
+    addIntent(intentDefinition : IntentDefinition) {
+        this.intent(intentDefinition.name, intentDefinition.schema(), intentDefinition.action);
+        this.slotTypes = this.slotTypes.concat(intentDefinition.slots.map(slot => slot.getSlotType()))
     }
 
 }

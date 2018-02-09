@@ -1,4 +1,6 @@
-export function skill(url: string, userSetInfo, links: any) {
+import { ImageLinks } from "./image-links";
+
+export function skill(url: string, userSetInfo, links: ImageLinks) {
     return {
       skillManifest: {
       publishingInformation: {

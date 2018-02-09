@@ -6,7 +6,7 @@ test((t) => {
 	const alexaApp = new AlexaApp();
 	alexaApp.addIntents();
 	t.is(!!alexaApp, true);
-	t.is(alexaApp.name, 'Skill');
+	t.is(alexaApp.name, '');
 
 });
 

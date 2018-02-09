@@ -25,7 +25,7 @@ test((t) => {
     t.is(helloWorld.action(testRequest, testResponse), testResponse)
 
     t.is(helloWorld.name, 'HelloWorld');
-    t.deepEqual(helloWorld.schema.slots, {});
-    t.deepEqual(helloWorld.schema.utterances, ['Hello world'])
+    t.deepEqual(helloWorld.schema().slots, {'name': 'NAME'});
+    t.deepEqual(helloWorld.schema().utterances, ['I would like to say hello to the world and {-|name}', 'Can I say hello to {you|me|them}'])
     
 });

@@ -6,6 +6,7 @@ import { askConfig } from "./ask-config";
 import { AlexaApp } from "../skill-definition/alexa-app";
 import {readSync} from 'clipboardy'
 import {uploadFile} from 'imgur';
+import { ImageLinks } from "./image-links";
 const readline = require('readline');
 
 /**
@@ -18,18 +19,9 @@ void async function() {
     const alexaApp = new AlexaApp();
     alexaApp.addIntents();
 
-    var path = require('path');
-    var appDir = path.dirname(require.main.filename) + '/../../img/';
-
-    const bigImage = await uploadFile(appDir + 'big-image.png');
-    const smallImage = await uploadFile(appDir + 'small-image.png')
-
-    const links = {
-        big: bigImage.data.link,
-        small: smallImage.data.link
-    }
-
-
+    const image = new ImageLinks();
+    await image.upload();
+    
     // Make the folder structure
     if(!existsSync(`./app`)) {
         mkdirSync(`./app`)
@@ -45,6 +37,6 @@ void async function() {
     }
 
     // Make the three required files for Amazon
-    writeFileSync(`./app/skill.json`, JSON.stringify(skill(url, PublishingInformation, links), null, 2));
-    writeFileSync(`./app/models/en-GB.json`, JSON.stringify(interactionModel(alexaApp.intents, PublishingInformation), null, 2));
+    writeFileSync(`./app/skill.json`, JSON.stringify(skill(url, PublishingInformation, image), null, 2));
+    writeFileSync(`./app/models/en-GB.json`, JSON.stringify(interactionModel(Object.values(alexaApp.intents), PublishingInformation, alexaApp.slotTypes), null, 2));
 }();

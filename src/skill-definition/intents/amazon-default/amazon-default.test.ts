@@ -10,8 +10,8 @@ test((t) => {
 
 
 	t.is(stopIntent.name, 'AMAZON.StopIntent');
-    t.deepEqual(stopIntent.schema.slots, {});
-    t.deepEqual(stopIntent.schema.utterances, [])
+    t.deepEqual(stopIntent.schema().slots, {});
+    t.deepEqual(stopIntent.schema().utterances, [])
     t.deepEqual(stopIntent.action, stopAction)
 });
 
