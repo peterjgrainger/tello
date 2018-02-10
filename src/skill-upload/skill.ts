@@ -2,7 +2,7 @@ import { ImageLinks } from "./image-links";
 
 export function skill(url: string, userSetInfo, links: ImageLinks) {
     return {
-      skillManifest: {
+      manifest: {
       publishingInformation: {
         locales: {
           'en-GB': {
