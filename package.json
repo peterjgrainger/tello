@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "build": "rimraf js && tsc",
+    "postinstall": "npm run build",
     "test": "npm run build && ava",
     "security": "snyk test",
-    "init": "ask init && now init && heroku login",
+    "init": "ask init && now login && heroku login",
     "create-skill": "node js/skill-upload/create-skill-json.js",
     "deploy:now": "now --public",
     "deploy:aws": "npm run create-skill && cd app && ask deploy",
-    "deploy:heroku": "git push heroku master",
+    "deploy:heroku": "(heroku auth:token && npm run heroku:push) || (heroku login && npm run heroku:push)",
+    "heroku:push": "git push heroku master && heroku domains",
     "deploy:test": "npm run build && npm run deploy:now && npm run deploy:aws",
     "deploy:prod": "npm run build && npm run deploy:heroku && npm run deploy:aws",
     "start": "node js/server/express-app.js"
@@ -57,21 +59,24 @@
   "homepage": "https://github.com/TheSmokingGnu/alexa-skill-boilerplate#readme",
   "devDependencies": {
     "@types/node": "^9.4.0",
-    "alexa-utterances": "^0.2.1",
     "ask-cli": "^1.1.0",
     "ava": "^0.24.0",
-    "clipboardy": "^1.2.2",
     "coveralls": "^3.0.0",
-    "imgur": "^0.2.1",
+    "heroku": "^0.2.0",
+    "now": "^9.3.2",
     "nyc": "^11.4.1",
-    "rimraf": "^2.6.2",
     "snyk": "^1.65.1",
-    "ts-mockito": "^2.2.7",
-    "typescript": "^2.6.2"
+    "ts-mockito": "^2.2.7"
   },
   "dependencies": {
     "alexa-app": "^4.2.0",
     "express": "^4.16.2",
-    "express-pino-logger": "^3.0.1"
+    "express-pino-logger": "^3.0.1",
+    "typescript": "^2.6.2",
+    "prompt": "^1.0.0",
+    "rimraf": "^2.6.2",
+    "clipboardy": "^1.2.2",
+    "alexa-utterances": "^0.2.1",
+    "imgur": "^0.2.1"
   }
 }

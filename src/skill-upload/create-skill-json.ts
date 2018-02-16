@@ -7,18 +7,28 @@ import { AlexaApp } from "../skill-definition/alexa-app";
 import {readSync} from 'clipboardy'
 import {uploadFile} from 'imgur';
 import { ImageLinks } from "./image-links";
-const readline = require('readline');
+import * as prompt from "prompt";
+import {promisify} from "util";
+
+const urlRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/
 
 /**
  * Self running funciton.
  */
 void async function() {
     // Read url from the clipboard
-    const url = readSync();
+    let url = readSync();
+
+    // if not a valid regex get from cli input
+    if(!urlRegex.test(url)) {
+        const result = await (promisify(prompt.get)(['heroku endpoint:☝️']));
+        url = result['heroku endpoint:☝️'];
+    }
     // initialise the app.
     const alexaApp = new AlexaApp();
     alexaApp.addIntents();
 
+    // upload the image
     const image = new ImageLinks();
     await image.upload();
     

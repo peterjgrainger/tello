@@ -8,7 +8,7 @@ export function interactionModel(intents : Array<intent>, PublishingInformation,
     return {
         interactionModel: {
             languageModel: {
-                invocationName: PublishingInformation.APP_NAME,
+                invocationName: PublishingInformation.NAME,
                 types: types,
                 intents: intents.map(singleIntent => {
                     return {
