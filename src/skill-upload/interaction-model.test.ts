@@ -43,7 +43,7 @@ test((t) => {
                 }]);
 
     t.is(model.interactionModel.languageModel.invocationName,
-        PublishingInformation.APP_NAME)
+        PublishingInformation.NAME)
     t.deepEqual(model.interactionModel.languageModel.types,[{
                 name: 'CUSTOM',
                 values: [{

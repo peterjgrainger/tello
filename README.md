@@ -13,8 +13,21 @@
 
 ## Quickstart
 
+### Set up accounts with aws / now / heroku
+
+```
+npm run init
+```
+
+### Deploy code to now and spec to AWS
+
 ```shell
-npm build
+npm run deploy:test
+```
+
+### Deploy code to heroku and spec to AWS
+```shell
+npm run deploy:prod
 ```
 
 ## Test
