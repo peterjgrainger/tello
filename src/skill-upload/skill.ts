@@ -1,5 +1,5 @@
 import { ImageLinks } from "./image-links";
-
+/* tslint:disable */
 export function skill(url: string, userSetInfo, links: ImageLinks) {
     return {
       manifest: {
@@ -16,20 +16,20 @@ export function skill(url: string, userSetInfo, links: ImageLinks) {
             description: userSetInfo.DESCRIPTION,
             smallIconUri: links.small,
             largeIconUri: links.big,
-          }
+          },
         },
         isAvailableWorldwide: true,
         testingInstructions: userSetInfo.TESTING_INSTRUCTIONS,
         category: userSetInfo.CATEGORY,
-        distributionCountries: []
+        distributionCountries: [],
       },
       apis: {
         custom: {
           endpoint: {
             sslCertificateType: "Wildcard",
-            uri: url
-          }
-        }
+            uri: url,
+          },
+        },
       },
       manifestVersion: "1.0",
       privacyAndCompliance: {
@@ -37,14 +37,14 @@ export function skill(url: string, userSetInfo, links: ImageLinks) {
         locales: {
           "en-GB": {
             termsOfUseUrl: "",
-            privacyPolicyUrl: ""
-          }
+            privacyPolicyUrl: "",
+          },
         },
         isExportCompliant: true,
         isChildDirected: false,
         usesPersonalInfo: false,
-        containsAds: false
-      }
-    }
-  }
+        containsAds: false,
+      },
+    },
+  };
 }

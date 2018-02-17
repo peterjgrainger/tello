@@ -6,8 +6,8 @@
   "scripts": {
     "build": "rimraf js && tsc",
     "postinstall": "npm run build",
-    "precommit": "npm run tslint",
-    "tslint": "tslint **/*.ts",
+    "precommit": "npm run build && npm test && npm run tslint",
+    "tslint": "tslint src/**/*.ts{,x}",
     "test": "npm run build && ava",
     "security": "snyk test",
     "init": "ask init && now login && heroku login",
@@ -65,6 +65,7 @@
   "devDependencies": {
     "ask-cli": "^1.1.0",
     "heroku-cli": "^6.15.26",
+    "husky": "^0.14.3",
     "now": "^9.3.2",
     "tslint": "^5.9.1"
   },

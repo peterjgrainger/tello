@@ -2,17 +2,17 @@ import {ExpressOptions} from 'alexa-app';
 import * as Express from 'express';
 
 /**
- * Default express options to allow handling 
+ * Default express options to allow handling
  * of request by express.
  */
 export class SkillExpressOptions implements ExpressOptions {
-    expressApp;
+    public expressApp;
     // This is required by Amazon
-    checkCert = true;
+    public checkCert = true;
 
-    debug:true;
+    public debug: true;
 
     constructor(app: any) {
         this.expressApp = app;
     }
-} 
+}
