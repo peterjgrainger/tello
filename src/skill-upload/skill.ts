@@ -2,36 +2,34 @@ import { ImageLinks } from "./image-links";
 
 export function skill(url: string, userSetInfo, links: ImageLinks) {
     return {
-      apis: {
-        custom: {
-          endpoint: {
-            sslCertificateType: "Wildcard",
-            uri: url,
-          },
-        },
-      },
       manifest: {
       publishingInformation: {
-        category: userSetInfo.CATEGORY,
-        distributionCountries: [],
-        isAvailableWorldwide: true,
         locales: {
           'en-GB': {
-            description: userSetInfo.DESCRIPTION,
+            summary: userSetInfo.SUMMARY,
             examplePhrases: [
               `Alexa open ${userSetInfo.APP_NAME}`,
               `Alexa launch ${userSetInfo.APP_NAME}`,
               `Alexa start ${userSetInfo.APP_NAME}`,
             ],
-            largeIconUri: links.big,
             name: userSetInfo.NAME,
+            description: userSetInfo.DESCRIPTION,
             smallIconUri: links.small,
-            summary: userSetInfo.SUMMARY,
-          },
+            largeIconUri: links.big,
+          }
         },
-
+        isAvailableWorldwide: true,
         testingInstructions: userSetInfo.TESTING_INSTRUCTIONS,
-
+        category: userSetInfo.CATEGORY,
+        distributionCountries: []
+      },
+      apis: {
+        custom: {
+          endpoint: {
+            sslCertificateType: "Wildcard",
+            uri: url
+          }
+        }
       },
       manifestVersion: "1.0",
       privacyAndCompliance: {
@@ -39,14 +37,14 @@ export function skill(url: string, userSetInfo, links: ImageLinks) {
         locales: {
           "en-GB": {
             termsOfUseUrl: "",
-            privacyPolicyUrl: "",
-          },
+            privacyPolicyUrl: ""
+          }
         },
         isExportCompliant: true,
         isChildDirected: false,
         usesPersonalInfo: false,
-        containsAds: false,
-      },
-    },
-  };
+        containsAds: false
+      }
+    }
+  }
 }
