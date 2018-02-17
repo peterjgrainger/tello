@@ -1,5 +1,11 @@
 import { Request, response } from "alexa-app/types";
 
-export function helpAction(request: Request, response:response) {
-    return response.say('Help text.').shouldEndSession(false);
+/**
+ * Required
+ *
+ * @param request
+ * @param response
+ */
+export function helpAction(request: Request, alexaResponse: response) {
+    return alexaResponse.say('Help text.').shouldEndSession(false);
 }

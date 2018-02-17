@@ -1,17 +1,16 @@
-import { dirname } from "path";
 import {uploadFile} from 'imgur';
-
+import { dirname } from "path";
 
 export class ImageLinks {
-    small: string;
-    big: string;
-    appDir: string;
+    public small: string;
+    public big: string;
+    public appDir: string;
 
     constructor() {
         this.appDir = dirname(require.main.filename) + '/../../img/';
     }
 
-    async upload() {
+    public async upload() {
         this.big = (await uploadFile(this.appDir + 'big-image.png')).data.link;
         this.small = (await uploadFile(this.appDir + 'small-image.png')).data.link;
     }

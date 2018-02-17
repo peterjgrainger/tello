@@ -6,16 +6,19 @@
   "scripts": {
     "build": "rimraf js && tsc",
     "postinstall": "npm run build",
+    "precommit": "npm run tslint",
+    "tslint": "tslint **/*.ts",
     "test": "npm run build && ava",
     "security": "snyk test",
     "init": "ask init && now login && heroku login",
     "create-skill": "node js/skill-upload/create-skill-json.js",
-    "deploy:now": "now --public",
-    "deploy:aws": "npm run create-skill && cd app && ask deploy",
-    "deploy:heroku": "(heroku auth:token && npm run heroku:push) || (heroku login && npm run heroku:push)",
+    "send:now": "now --public",
+    "send:aws": "npm run create-skill && cd app && ask deploy",
+    "send:heroku": "(heroku auth:token && npm run heroku:push) || (heroku login && npm run heroku:push)",
     "heroku:push": "git push heroku master && heroku domains",
-    "deploy:test": "npm run build && npm run deploy:now && npm run deploy:aws",
-    "deploy:prod": "npm run build && npm run deploy:heroku && npm run deploy:aws",
+    "deploy:now": "npm run build && npm run send:now && npm run send:aws",
+    "deploy:new-heroku": "heroku create && npm run build && npm run send:heroku && npm run send:aws",
+    "deploy:update-heroku": "npm run build && npm run send:heroku && npm run send:aws",
     "start": "node js/server/express-app.js"
   },
   "nyc": {
@@ -60,7 +63,8 @@
   "devDependencies": {
     "ask-cli": "^1.1.0",
     "heroku-cli": "^6.15.26",
-    "now": "^9.3.2"
+    "now": "^9.3.2",
+    "tslint": "^5.9.1"
   },
   "dependencies": {
     "alexa-app": "^4.2.0",

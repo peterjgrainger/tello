@@ -1,5 +1,15 @@
 import { Request, response } from "alexa-app/types";
+import { PublishingInformation } from "../../../publishing-information";
 
-export function endAction(request: Request, response:response) {
-    return response.say('Ended.').shouldEndSession(true);
+/**
+ * Required alexa intent.  Only change the wording after
+ * ended in the response, but you don't need to.
+ *
+ * End the session on user request
+ *
+ * @param request alexa-app request type
+ * @param response alexa-app response type
+ */
+export function endAction(request: Request, alexaReponse: response) {
+    return alexaReponse.say(`Ended ${PublishingInformation.APP_NAME} skill`).shouldEndSession(true);
 }

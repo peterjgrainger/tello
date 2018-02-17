@@ -22,12 +22,19 @@ npm run init
 ### Deploy code to now and spec to AWS
 
 ```shell
-npm run deploy:test
+npm run deploy:now
+```
+
+### First time deploying to Heroku need to create a new dyno
+
+
+```shell
+npm run deploy:new-heroku
 ```
 
 ### Deploy code to heroku and spec to AWS
 ```shell
-npm run deploy:prod
+npm run deploy:update-heroku
 ```
 
 ## Test
