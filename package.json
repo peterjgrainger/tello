@@ -19,7 +19,9 @@
     "deploy:now": "npm run build && npm run send:now && npm run send:aws",
     "deploy:new-heroku": "heroku create && npm run build && npm run send:heroku && npm run send:aws",
     "deploy:update-heroku": "npm run build && npm run send:heroku && npm run send:aws",
-    "start": "node js/server/express-app.js"
+    "start": "node js/server/express-app.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "nyc": {
     "check-coverage": true,
@@ -67,20 +69,21 @@
     "tslint": "^5.9.1"
   },
   "dependencies": {
+    "@types/node": "^9.4.0",
     "alexa-app": "^4.2.0",
+    "alexa-utterances": "^0.2.1",
+    "ava": "^0.24.0",
+    "clipboardy": "^1.2.2",
+    "coveralls": "^3.0.0",
     "express": "^4.16.2",
     "express-pino-logger": "^3.0.1",
-    "typescript": "^2.6.2",
+    "imgur": "^0.2.1",
+    "nyc": "^11.4.1",
     "prompt": "^1.0.0",
     "rimraf": "^2.6.2",
-    "clipboardy": "^1.2.2",
-    "alexa-utterances": "^0.2.1",
-    "imgur": "^0.2.1",
-    "@types/node": "^9.4.0",
-    "ava": "^0.24.0",
-    "coveralls": "^3.0.0",
-    "nyc": "^11.4.1",
     "snyk": "^1.65.1",
-    "ts-mockito": "^2.2.7"
-  }
+    "ts-mockito": "^2.2.7",
+    "typescript": "^2.6.2"
+  },
+  "snyk": true
 }
