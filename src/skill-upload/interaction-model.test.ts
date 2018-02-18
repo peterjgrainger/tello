@@ -2,6 +2,7 @@ import { dialog, DialogState, intent } from 'alexa-app/types';
 import test from 'ava';
 import { PublishingInformation } from '../publishing-information';
 import { Slot } from '../skill-definition/models/slots/slot';
+import { slotTypes } from '../skill-definition/models/slots/slot-types';
 import { interactionModel } from './interaction-model';
 
 const intents = [
@@ -10,7 +11,7 @@ const intents = [
             dialogState: {} as DialogState,
             isDelegatedDialog: () => true,
             name: 'testIntent',
-            slots: {'some slot': 'CUSTOM'},
+            slots: { name: 'NAME' },
             utterances: [
                 'I would like to say hello to the world and {-|name}',
                 'Can I say hello to {you|me|them}',
@@ -19,15 +20,11 @@ const intents = [
     ];
 
 test((t) => {
-    const model = interactionModel(intents, PublishingInformation, [{
-        name: 'CUSTOM',
-        values: [{
-            name: {
-                value: 'sample',
-            },
-        }],
-    }]);
+    const model = interactionModel(intents, PublishingInformation);
     t.is(!!model, true);
+
+    const util = require('util');
+
     t.deepEqual(model.interactionModel.languageModel.intents,
                 [{
                     name: 'testIntent',
@@ -37,17 +34,25 @@ test((t) => {
                         'Can I say hello to me',
                         'Can I say hello to them',
                     ],
-                    slots: [{name: 'some slot',
-                            type: 'CUSTOM'}],
+                    slots: [{name: 'name',
+                            type: 'NAME'}],
                 }]);
 
     t.is(model.interactionModel.languageModel.invocationName,
         PublishingInformation.NAME);
     t.deepEqual(model.interactionModel.languageModel.types, [{
-                name: 'CUSTOM',
+                name: 'NAME',
                 values: [{
                     name: {
-                        value: 'sample',
+                        value: 'Peter',
+                    },
+                }, {
+                    name: {
+                        value: 'Paul',
+                    },
+                }, {
+                    name: {
+                        value: 'John F. Kennedy',
                     },
                 }],
             }]);

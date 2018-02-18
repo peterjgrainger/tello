@@ -1,34 +1,34 @@
+import { SlotType } from "./slot-type";
+
 export class Slot {
-    name: string;
-    type: string;
-    samples: Array<string>
-    constructor(name: string, type: string, samples: Array<string>=[]) {
+    public name: string;
+    public slotType: SlotType;
+    constructor(name: string, slotType: SlotType) {
         this.name = name;
-        this.type = type;
-        this.samples = samples;
+        this.slotType = slotType;
     }
 
-    getServerSchema() : {} {
-        return this[this.name] = this.type;
+    public getServerSchema(): {} {
+        return this[this.name] = this.slotType.type;
     }
 
-    getSlotType() : {name: string, values: Array<{name: {value: string}}>} {
+    public getSlotType(): {name: string, values: Array<{name: {value: string}}>} {
         return {
-            name: this.type,
-            values: this.samples.map(sample => {
+            name: this.slotType.type,
+            values: this.slotType.samples.map((sample) => {
                 return {
                     name: {
-                        value: sample
-                    }
-                }
-            })
-        }
+                        value: sample,
+                    },
+                };
+            }),
+        };
     }
 
-    getInteractionDefinition() {
+    public getInteractionDefinition() {
         return {
             name: this.name,
-            type: this.type
-        }
+            type: this.slotType.type,
+        };
     }
 }

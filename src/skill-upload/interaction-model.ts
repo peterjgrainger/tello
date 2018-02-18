@@ -1,9 +1,16 @@
 import {intent} from "alexa-app/types";
 import * as utterances from "alexa-utterances";
+import { inspect } from "util";
 import { Intent } from "../skill-definition/models/intents/intent";
 import { Slot } from "../skill-definition/models/slots/slot";
+import { getSlotTypesForModel, slotTypes } from "../skill-definition/models/slots/slot-types";
 
-export function interactionModel(intents: intent[], PublishingInformation, types) {
+/**
+ * Create an AWS CLI compliant interaction model
+ * @param intents
+ * @param PublishingInformation
+ */
+export function interactionModel(intents: intent[], PublishingInformation) {
     return {
         interactionModel: {
             languageModel: {
@@ -11,14 +18,16 @@ export function interactionModel(intents: intent[], PublishingInformation, types
                     return {
                         name: singleIntent.name,
                         samples: singleIntent.utterances.reduce((acc, value) => acc.concat(utterances(value)), []),
-                        slots : Object.entries(singleIntent.slots)
-                                      .map((slot) => new Slot(slot[0], slot[1]).getInteractionDefinition()),
+                        slots : Object.entries(singleIntent.slots).map((value) => {
+                            return {
+                                name: value[0],
+                                type: value[1],
+                            };
+                        }),
                     };
                 }),
                 invocationName: PublishingInformation.NAME,
-
-                types,
-
+                types: getSlotTypesForModel(),
             },
         },
     };

@@ -50,7 +50,7 @@ void async function() {
     // Make the three required files for Amazon
     writeFileSync(`./app/skill.json`, JSON.stringify(skill(url, PublishingInformation, image), null, 2));
     writeFileSync(`./app/models/en-GB.json`, JSON.stringify(interactionModel(Object.values(alexaApp.intents),
-                                                            PublishingInformation, alexaApp.slotTypes),
+                                                            PublishingInformation),
                                                             null,
                                                             2));
 }();

@@ -1,4 +1,4 @@
-import { Request, response } from "alexa-app/types";
+import { Request, request, response } from "alexa-app/types";
 import test from 'ava';
 import {instance, mock, verify} from 'ts-mockito';
 import { PublishingInformation } from '../../../publishing-information';
@@ -8,7 +8,7 @@ test((t) => {
 
     t.plan(3);
 
-    const testRequest = {};
+    const testRequest = {} as request;
     const testResponse = {
         say: (input) => {
             t.is(input, `Stopped ${PublishingInformation.APP_NAME} skill`);

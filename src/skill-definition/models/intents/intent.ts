@@ -8,7 +8,7 @@ export abstract class Intent {
     public schema() {
         return {
             slots: this.slots.reduce((acc, value) => {
-                acc[value.name] = value.type;
+                acc[value.name] = value.slotType.type;
                 return acc;
             }, {}),
             utterances: this.utterances,

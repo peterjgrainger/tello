@@ -10,14 +10,21 @@ import { launch } from './launch/launch';
 import { Intent } from './models/intents/intent';
 import { IntentDefinition } from './models/intents/intent-definition';
 
+/**
+ * Extension of the alexa app module to provide a few
+ * helper functions.
+ *
+ * @class AlexaApp
+ * @extends app alexa app library
+ */
 export class AlexaApp extends app {
-
-    public slotTypes = [];
-
     constructor() {
         super("");
     }
 
+    /**
+     * Add all the required alexa intents plus one custom one.
+     */
     public addIntents() {
         this.launch(launch);
         this.addIntent(new AmazonDefault('stop', stopAction));
@@ -26,13 +33,13 @@ export class AlexaApp extends app {
         this.addIntent(new HelloWorld());
     }
 
+    /**
+     * Call the alexa app API.
+     *
+     * @param intentDefinition intent to add.
+     */
     public addIntent(intentDefinition: IntentDefinition) {
         this.intent(intentDefinition.name, intentDefinition.schema(), intentDefinition.action);
-        this.slotTypes = this.slotTypes.concat(intentDefinition.slots.map((slot) => slot.getSlotType()));
-
-        if ( new Set(this.slotTypes.map((value) => value.name)).size !== this.slotTypes.length) {
-            throw new RangeError('Some of the slot types have the same name, they need to be unique');
-        }
     }
 
 }

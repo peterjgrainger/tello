@@ -1,4 +1,4 @@
-import { Request, response } from "alexa-app/types";
+import { Context, dialog, IntentRequest, LaunchRequest, request, RequestBody, response, session} from "alexa-app/types";
 import test from 'ava';
 import {instance, mock, verify} from 'ts-mockito';
 import {HelloWorld} from './hello-world';
@@ -8,11 +8,25 @@ test((t) => {
 
     t.plan(6);
 
-    const testRequest = {};
+    const testRequest = {
+        confirmationStatus: '',
+        context: {} as Context,
+        data: {} as RequestBody,
+        getDialog: () => ({} as dialog),
+        getSession: () => ({} as session),
+        hasSession: () => true,
+        isAudioPlayer: () => false,
+        isConfirmed: () => true,
+        isPlaybackController: () => false,
+        session: () => false,
+        slot: () => 'person name',
+        slots: {},
+        type: () => "LaunchRequest",
+    } as request;
 
     const testResponse = {
         say: (input) => {
-            t.is(input, 'Hello World');
+            t.is(input, 'Hello to you person name');
             return testResponse;
         },
         shouldEndSession: (shouldEnd) => {
@@ -25,6 +39,7 @@ test((t) => {
 
     t.is(helloWorld.name, 'HelloWorld');
     t.deepEqual(helloWorld.schema().slots, {name: 'NAME'});
-    t.deepEqual(helloWorld.schema().utterances, ['I would like to say hello to the world and {-|name}', 'Can I say hello to {you|me|them}']);
+    t.deepEqual(helloWorld.schema().utterances,
+                ['I would like to say hello to the world and {-|name}', 'Can I say hello to {you|me|them}']);
 
 });

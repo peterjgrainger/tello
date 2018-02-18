@@ -1,4 +1,4 @@
-import { Request, response } from "alexa-app/types";
+import { request, response } from "alexa-app/types";
 
 /**
  * Required
@@ -6,6 +6,6 @@ import { Request, response } from "alexa-app/types";
  * @param request
  * @param response
  */
-export function helpAction(request: Request, alexaResponse: response) {
+export function helpAction(alexaRequest: request, alexaResponse: response) {
     return alexaResponse.say('Help text.').shouldEndSession(false);
 }

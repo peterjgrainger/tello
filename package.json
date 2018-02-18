@@ -21,7 +21,8 @@
     "deploy:update-heroku": "npm run build && npm run send:heroku && npm run send:aws",
     "start": "node js/server/express-app.js",
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "prepare": "npm run snyk-protect",
+    "ask:testing": "node js/helpers/open-ask-console"
   },
   "nyc": {
     "check-coverage": true,
@@ -67,6 +68,7 @@
     "heroku-cli": "^6.15.26",
     "husky": "^0.14.3",
     "now": "^9.3.2",
+    "opn": "^5.2.0",
     "tslint": "^5.9.1"
   },
   "dependencies": {

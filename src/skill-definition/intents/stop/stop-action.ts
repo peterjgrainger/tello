@@ -1,4 +1,4 @@
-import { Request, response } from "alexa-app/types";
+import { request, response } from "alexa-app/types";
 import { PublishingInformation } from "../../../publishing-information";
 
 /**
@@ -10,6 +10,7 @@ import { PublishingInformation } from "../../../publishing-information";
  * @param request alexa-app request type
  * @param response alexa-app response type
  */
-export function stopAction(request: Request, alexaResponse: response) {
-    return alexaResponse.say(`Stopped ${PublishingInformation.APP_NAME} skill`).shouldEndSession(true);
+export function stopAction(alexaRequest: request, alexaResponse: response) {
+    return alexaResponse.say(`Stopped ${PublishingInformation.APP_NAME} skill`)
+                        .shouldEndSession(true);
 }
