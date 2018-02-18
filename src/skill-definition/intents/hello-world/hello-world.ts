@@ -23,6 +23,6 @@ export class HelloWorld extends Intent implements IntentDefinition {
         new Slot('name', slotTypes.NAME),
     ];
     public action = (alexaRequest: request, alexaResponse: response) =>
-        alexaResponse.say(`Hello to you ${alexaRequest.slot(slotTypes.NAME.type)}`)
+        alexaResponse.say(`Hello to you ${alexaRequest.slot('name')}`)
                     .shouldEndSession(true)
 }
